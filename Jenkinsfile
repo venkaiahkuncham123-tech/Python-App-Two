@@ -11,8 +11,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git 'https://github.com/venkaiahkuncham123-tech/Python-App-Two.git'
-            }
+                git branch: "${params.BRANCH}", url: 'https://github.com/venkaiahkuncham123-tech/Python-App-Two.git'            }
         }
          stage('Installing Virtual Environment and dependencies') {
             steps {
