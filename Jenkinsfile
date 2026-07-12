@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     python -m venv venv \
-                    ./venv/bin/pip install -r requirements.txt'''
+                    ./venv/bin/pip3 install -r requirements.txt'''
                     
             }
         }
@@ -39,14 +39,14 @@ pipeline {
              }
             steps {
                 configFileProvider([configFile(fileId: 'python-nexus-config', targetLocation: '.')]) {
-                            sh './venv/bin/pip install twine'
+                            sh './venv/bin/pip3 install twine'
             sh './venv/bin/twine upload --config-file .pypirc dist/*'
                             }
             }
                 }
                 stage('Running Application') {
             steps {
-                sh './venv/bin/python run.py'
+                sh './venv/bin/python3 run.py'
             }
         }
     }
