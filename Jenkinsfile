@@ -17,8 +17,8 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv venv &&\
-                    pip install --upgrade &&
                     . venv/bin/activate && \
+                    pip install --upgrade &&
                     pip install -r requirements.txt '''
                     
             }
