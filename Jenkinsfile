@@ -16,7 +16,7 @@ pipeline {
          stage('Installing Virtual Environment and dependencies') {
             steps {
                 sh '''
-                    apt-get install python3.14-venv -y
+                    sudo apt-get install python3.14-venv -y
                     python3 -m venv venv &&\
                     . venv/bin/activate && \
                    pip install --upgrade -r requirements.txt '''
