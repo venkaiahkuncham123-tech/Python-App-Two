@@ -49,7 +49,10 @@ pipeline {
              }
             steps {
                 configFileProvider([configFile(fileId: 'python-nexus-config', targetLocation: '.')]) {
-                            sh './venv/bin/python3 build'
+                            sh '''
+                            ./venv/bin/pip install build twine && \
+                            ./venv/bin/python3 -m build && \
+                                            ''''
                                        }
             }
                 }
