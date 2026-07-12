@@ -15,7 +15,7 @@ pipeline {
         }
          stage('Installing Virtual Environment and dependencies') {
             steps {
-                sh '''sudo apt-get update && apt-get install python3-venv -y \
+                sh '''apt-get update && apt-get install python3-venv -y \
                     python -m venv venv \
                     ./venv/bin/pip install -r requirements.txt'''
                     
