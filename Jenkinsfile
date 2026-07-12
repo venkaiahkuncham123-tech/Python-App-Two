@@ -5,7 +5,7 @@ pipeline {
     }
     parameters {
         choice(name:'BRANCH', choices: ['master','main','ppd','qa'], description: 'Brnach To Clone')
-        booelanParam(name:'SONAR', defaultValue: false, description: 'Do you need Sonar Analysis')
+        booeleanParam(name:'SONAR', defaultValue: false, description: 'Do you need Sonar Analysis')
         booleanParam(name: 'NEXUS', defaultValue: false, description: 'Do you want to publich artifact')
     }
     stages {
