@@ -23,7 +23,7 @@ pipeline {
                     
             }
         }
-        stage('Git Checkout') {
+        stage('Python Test Cases'){
             steps {
                 sh '. venv/bin/pip pytest'
             }
