@@ -17,9 +17,8 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv venv &&\
-                    . venv/bin/activate && \
-                   pip install --upgrade -r requirements.txt
-                    '''
+                    ./venv/bin/activate && \
+                   pip install --upgrade -r requirements.txt '''
                     
             }
         }
@@ -49,10 +48,9 @@ pipeline {
              }
             steps {
                 configFileProvider([configFile(fileId: 'python-nexus-config', targetLocation: '.')]) {
-                            sh '''
-                            ./venv/bin/pip install build twine && \
-                            ./venv/bin/python3 -m build && \
-                                            ''''
+                            sh './venv/bin/pip install build twine' 
+                            sh './venv/bin/python3 -m build'
+                                        
                                        }
             }
                 }
