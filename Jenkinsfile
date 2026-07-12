@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Python Test Cases'){
             steps {
-                sh '. venv/bin/pip pytest'
+                sh './venv/bin/pytest'
             }
         }
          stage('Sonaqube Analysis') {
