@@ -27,11 +27,14 @@ pipeline {
                  expression { params.SONAR == true }
              }
             steps {
+
+                withSonarQubeEnv('sonar') {
+                    sh "${SONAR_HOME}/bin/sonar-scanner -Dsonar.settings=sonar-project.settings"
+
+}
         
-        withCredentials([usernamePassword(credentialsId: 'Sonar-Cred-Server', passwordVariable: '', usernameVariable: '')]) {
-                sh "${SONAR_HOME}/bin/sonar-scanner -Dsonar.settings=sonar-project.settings"
             
-        }
+        
             }
         }
          stage('Articat Publication') {
