@@ -18,8 +18,14 @@ pipeline {
                 sh '''
                     python3 -m venv venv &&\
                     . venv/bin/activate && \
-                   pip install --upgrade -r requirements.txt'''
+                   pip install --upgrade -r requirements.txt
+                    '''
                     
+            }
+        }
+        stage('Git Checkout') {
+            steps {
+                sh '. venv/bin/pip pytest'
             }
         }
          stage('Sonaqube Analysis') {
@@ -43,9 +49,8 @@ pipeline {
              }
             steps {
                 configFileProvider([configFile(fileId: 'python-nexus-config', targetLocation: '.')]) {
-                            sh './venv/bin/pip3 install twine'
-            sh './venv/bin/twine upload --config-file .pypirc dist/*'
-                            }
+                            sh './venv/bin/python3 build'
+                                       }
             }
                 }
                 stage('Running Application') {
