@@ -16,8 +16,7 @@ pipeline {
          stage('Installing Virtual Environment and dependencies') {
             steps {
                 sh '''
-                    python -m venv venv \
-                    . venv/bin/activate \
+                    python3 -m venv venv \
                     ./venv/bin/pip install -r requirements.txt'''
                     
             }
